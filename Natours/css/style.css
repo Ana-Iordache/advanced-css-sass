@@ -6,3 +6,34 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    /* to right - start from the left and go to the right-bottom corner */
+    background-image: linear-gradient(to right bottom, #7ed56fc5, #28b485c5), url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top; /* the top of the image stays the same as the image is redimensioned */
+
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    /* 
+        starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
+        move to the right top corner by 100% on x axis away from the left side (first corner)
+        then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
+        and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
+    */
+}
