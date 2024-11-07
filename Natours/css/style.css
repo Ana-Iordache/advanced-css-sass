@@ -59,6 +59,8 @@ body {
     /* these two 50% are direclty related to the current element
     it will shift half of the width to te left side, and the same for the height */
     transform: translate(-50%, -50%);
+
+    text-align: center; /* this will align all the inloine elements int he center */
 }
 
 .heading-primary {
@@ -67,6 +69,7 @@ body {
 
     /* some hack to stop the element from 'shaking' a bit to the top when the anmation ends */
     backface-visibility: hidden;
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -104,6 +107,7 @@ body {
 /*
     ANIMATIONS:
     1) transition property, and change the properties that we want to animate
+    2) specify the steps of the anymations with the keyframes
 */
 
 @keyframes moveInLeft {
@@ -152,4 +156,31 @@ body {
         /* in the exaclty place that is now in the document  */
         transform: translateX(0);
     }
+}
+
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 100px;
+    transition: all .2s; /* all the properties are enabled to be animated; transitions must be set on the initial states */
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    /* x y blur color*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.btn:active {
+    transform: translateY(-1px); /* related to the initial state, not to the hover state */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
 }
