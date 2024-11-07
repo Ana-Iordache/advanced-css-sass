@@ -31,9 +31,9 @@ body {
 
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     /* 
-        starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
-        move to the right top corner by 100% on x axis away from the left side (first corner)
-        then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
-        and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
+        - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
+        - move to the right top corner by 100% on x axis away from the left side (first corner)
+        - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
+        - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
     */
 }
