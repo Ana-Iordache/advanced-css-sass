@@ -28,6 +28,7 @@ body {
     background-image: linear-gradient(to right bottom, #7ed56fc5, #28b485c5), url(../img/hero.jpg);
     background-size: cover;
     background-position: top; /* the top of the image stays the same as the image is redimensioned */
+    position: relative;
 
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     /* 
@@ -36,4 +37,45 @@ body {
         - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
         - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
     */
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px; /* width is automatically figured out by the browser */
+}
+
+.text-box {
+    position: absolute;
+
+    /* these two are related to the parent element*/
+    top: 50%;
+    left: 50%;
+
+    /* these two 50% are direclty related to the current element
+    it will shift half of the width to te left side, and the same for the height */
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
 }
