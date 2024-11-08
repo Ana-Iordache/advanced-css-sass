@@ -4,6 +4,7 @@ $color-primary-dark: #28b485;
 
 $color-gray-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 *,
 *::after,
@@ -49,30 +50,30 @@ body {
         - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
         - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
     */
-}
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
 
-.header__logo {
-    height: 3.5rem; /* width is automatically figured out by the browser */
-}
+    &__logo {
+        height: 3.5rem; /* width is automatically figured out by the browser */
+    }
 
-.header__text-box {
-    position: absolute;
-
-    /* these two are related to the parent element*/
-    top: 50%;
-    left: 50%;
-
-    /* these two 50% are direclty related to the current element
-    it will shift half of the width to te left side, and the same for the height */
-    transform: translate(-50%, -50%);
-
-    text-align: center; /* this will align all the inloine elements int he center */
+    &__text-box {
+        position: absolute;
+    
+        /* these two are related to the parent element*/
+        top: 50%;
+        left: 50%;
+    
+        /* these two 50% are direclty related to the current element
+        it will shift half of the width to te left side, and the same for the height */
+        transform: translate(-50%, -50%);
+    
+        text-align: center; /* this will align all the inloine elements int he center */
+    }
 }
 
 .heading-primary {
@@ -82,38 +83,38 @@ body {
     /* some hack to stop the element from 'shaking' a bit to the top when the anmation ends */
     backface-visibility: hidden;
     margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+    
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+    
+        /* 
+        how the animation will proceed; how fast or slow the specified parameters in keyframe will happend over time  
+        https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
+        */
+        animation-timing-function: ease-out;
+    
+        /* animation happens 3 times */
+        /* animation-iteration-count: 3; */
+    
+        /* before animations starts to play, wait for 3 sec */
+        /* animation-delay: 3s; */
+    }
 
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-
-    /* 
-    how the animation will proceed; how fast or slow the specified parameters in keyframe will happend over time  
-    https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
-    */
-    animation-timing-function: ease-out;
-
-    /* animation happens 3 times */
-    /* animation-iteration-count: 3; */
-
-    /* before animations starts to play, wait for 3 sec */
-    /* animation-delay: 3s; */
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-
-    /* shorthand for all the animation properties, the CSS will figure out which is what */
-    animation: moveInRight 1s ease-out;
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+    
+        /* shorthand for all the animation properties, the CSS will figure out which is what */
+        animation: moveInRight 1s ease-out;
+    }
 }
 
 /*
@@ -182,60 +183,62 @@ body {
     }
 }
 
-.btn:link,
-.btn:visited {
-    display: inline-block;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
-    transition: all .2s; /* all the properties are enabled to be animated; transitions must be set on the initial states */
-    position: relative;
-    font-size: 1.6rem;
-}
+.btn {
+    &:link,
+    &:visited {
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        border-radius: 10rem;
+        transition: all .2s; /* all the properties are enabled to be animated; transitions must be set on the initial states */
+        position: relative;
+        font-size: 1.6rem;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+    
+        /* x y blur color*/
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2); 
 
-.btn:hover {
-    transform: translateY(-3px);
+        /* after element only when we hover the button */
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6); /* increase the element */
+            opacity: 0; /* fading out */
+        }
+    }
+    
+    &:active {
+        transform: translateY(-1px); /* related to the initial state, not to the hover state */
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2); 
+    }
+    
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: #777;
 
-    /* x y blur color*/
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); 
-}
+        &::after {
+            background-color: $color-white;
+        }
+    }
 
-.btn:active {
-    transform: translateY(-1px); /* related to the initial state, not to the hover state */
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2); 
-}
-
-.btn--white {
-    background-color: $color-white;
-    color: #777;
-}
-
-.btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
-
-.btn--white::after {
-    background-color: $color-white;
-}
-
-/* after element only when we hover the button */
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6); /* increase the element */
-    opacity: 0; /* fading out */
-}
-
-.btn-animated {
-    animation: moveInButton .5s ease-out .75s;
-    /* .75s for delay */
-    animation-fill-mode: backwards; /* applies the styles of the 0% before the animation starts */
+    &--animated {
+        animation: moveInButton .5s ease-out .75s;
+        /* .75s for delay */
+        animation-fill-mode: backwards; /* applies the styles of the 0% before the animation starts */
+    }
 }
