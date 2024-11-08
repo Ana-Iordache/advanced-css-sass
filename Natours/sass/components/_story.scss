@@ -1,0 +1,42 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    background-color: $color-white;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    // for the image we already have a transform, which will have priority
+    // so we need to add also to the transform of img
+    & > * {
+        transform: skewX(12deg);
+    }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left; // in roder to make the rest of the content floar around it
+
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); // radius at x y
+        /* 
+            defines where the content flows around the element
+            50% => radius = half of height and width = 7.5rem 
+            50% 50% - exaclty at the center of the circle (x y)
+            we need to use float, we have to set the height and the width in order to work
+        */
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        // this will make the element to have a form of a circle
+
+        transform: translateX(-3rem) skewX(12deg); // in order to have more space between the circle and the text => also need to add 3 more rem to the left padding
+    }
+
+    &__image {
+        height: 100%;
+    }
+}
