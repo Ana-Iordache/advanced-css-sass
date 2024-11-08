@@ -1,0 +1,59 @@
+.btn {
+    &:link,
+    &:visited {
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        border-radius: 10rem;
+        transition: all .2s; /* all the properties are enabled to be animated; transitions must be set on the initial states */
+        position: relative;
+        font-size: 1.6rem;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+    
+        /* x y blur color*/
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2); 
+
+        /* after element only when we hover the button */
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6); /* increase the element */
+            opacity: 0; /* fading out */
+        }
+    }
+    
+    &:active {
+        transform: translateY(-1px); /* related to the initial state, not to the hover state */
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2); 
+    }
+    
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: #777;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--animated {
+        animation: moveInButton .5s ease-out .75s;
+        /* .75s for delay */
+        animation-fill-mode: backwards; /* applies the styles of the 0% before the animation starts */
+    }
+}

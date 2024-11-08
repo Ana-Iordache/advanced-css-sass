@@ -1,0 +1,40 @@
+.header {
+    height: 95vh;
+    /* to right - start from the left and go to the right-bottom corner */
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top; /* the top of the image stays the same as the image is redimensioned */
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    /* 
+        - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
+        - move to the right top corner by 100% on x axis away from the left side (first corner)
+        - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
+        - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
+    */
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem; /* width is automatically figured out by the browser */
+    }
+
+    &__text-box {
+        position: absolute;
+    
+        /* these two are related to the parent element*/
+        top: 50%;
+        left: 50%;
+    
+        /* these two 50% are direclty related to the current element
+        it will shift half of the width to te left side, and the same for the height */
+        transform: translate(-50%, -50%);
+    
+        text-align: center; /* this will align all the inloine elements int he center */
+    }
+}

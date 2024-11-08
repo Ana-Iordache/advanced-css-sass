@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* good practice */
+}
+
+html {
+    font-size: 62.5%; 
+    /* 
+        1rem = 10px 
+        we want to set this, but if we set it to px, then when the user changes the size of the briwser, it will be exactly 10px
+        so we should set it to 100% to be exactly as the size of the viewport.
+        but to set 10px, we divide 10/16 = 62.5%
+    */
+}
+
+body {
+    box-sizing: border-box;
+}

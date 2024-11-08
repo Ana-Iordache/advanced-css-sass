@@ -1,0 +1,65 @@
+/*
+    ANIMATIONS:
+    1) transition property, and change the properties that we want to animate
+    2) specify the steps of the anymations with the keyframes
+*/
+
+@keyframes moveInLeft {
+    /* before the animation starts */
+    0% {
+        opacity: 0;
+        /* we want to be more on the left than in the beginning*/
+        transform: translateX(-10rem) /*rotate(-50deg)*/;
+    }
+
+    /* 60% {
+        transform: rotate(180deg);
+    } */
+
+    /* in between */
+    80% {
+        /* move a little bit more to the right */
+        transform: translateX(1rem);
+    }
+
+    /* when the animation finish */
+    100% {
+        opacity: 1;
+        /* in the exaclty place that is now in the document  */
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    /* before the animation starts */
+    0% {
+        opacity: 0;
+        /* we want to be more on the left than in the beginning*/
+        transform: translateX(10rem);
+    }
+
+    /* in between */
+    80% {
+        /* move a little bit more to the right */
+        transform: translateX(-1rem);
+    }
+
+    /* when the animation finish */
+    100% {
+        opacity: 1;
+        /* in the exaclty place that is now in the document  */
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
