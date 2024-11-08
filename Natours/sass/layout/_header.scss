@@ -6,7 +6,7 @@
     background-position: top; /* the top of the image stays the same as the image is redimensioned */
     position: relative;
 
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     /* 
         - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
         - move to the right top corner by 100% on x axis away from the left side (first corner)

@@ -2,7 +2,6 @@
     /* if we have enough available space it will have the width that we specified
      if not and the viewport is smaller the specified width, it will fill 100% of the available space */
     max-width: $grid-width;
-    background-color: #eee;
     margin: 0 auto; /* center a block element inside another block element */
     
     &:not(:last-child) {
@@ -18,7 +17,6 @@
         $ -> ends with
     */
     [class^="col-"] {
-        background-color: orangered;
         float: left;
 
         &:not(:last-child) {
