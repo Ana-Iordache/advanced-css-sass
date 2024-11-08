@@ -3,3 +3,18 @@
     padding: 25rem 0;
     margin-top: -20vh; /* so it will cover the remaining white space created by the polygon fron header (95vh - 75vh) */
 }
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/nat-4.jpg);
+    background-size: cover;
+
+    // another way to have that cropped effect
+    transform: skewY(-7deg);
+    margin-top: -10rem; // get rid of the white space created by skewing
+
+    // everything that is a direct child of section-features
+    & > * {
+        transform: skewY(7deg); // skew to the other direction so that the children will be unskewed
+    }
+}
