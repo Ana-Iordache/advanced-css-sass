@@ -14,6 +14,7 @@
         right: 6rem;
         border-radius: 50%;
         z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
     }
 
     &__background {
@@ -27,17 +28,20 @@
         right: 6.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark); // start in the middle of the element and goes from there in all the outside directions
         z-index: 1000;
-
-        transform: scale(80);
+        transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1); // https://easings.net/
+        // transform: scale(80); will scale when checkbox is checked
     }
 
     &__nav {
         height: 100vh;
-        width: 100%;
+        width: 0; // in order the items not be there at all, because we set the opacity to 0, but the link should also not be 'clickable'
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         z-index: 1500;
+
+        opacity: 0;
+        transition: all .8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
     }
 
     &__list {
@@ -80,5 +84,14 @@
             transform: translateX(1rem); // it doesn't work if the element is not displayed as block
         }
 
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
     }
 }
