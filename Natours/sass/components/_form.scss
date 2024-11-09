@@ -10,6 +10,7 @@
         border-bottom: 3px solid transparent; // so when focused will have the same height with the padding
         width: 100%;
         display: block;
+        transition: all .3s; // to have a nice effect when focus changes
 
         &:focus {
             outline: none;
