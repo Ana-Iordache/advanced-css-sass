@@ -1,0 +1,50 @@
+.form {
+    &__input {
+        font-size: 1.5rem;
+        font-family: inherit;
+        color: inherit;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: 0;            
+        border-bottom: 3px solid transparent; // so when focused will have the same height with the padding
+        width: 100%;
+        display: block;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        // style for invalid input only when is focused
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+
+        // as soon as we start typing the placehodler becomes darker (TODO: i do not see any difference)
+        &::-webkit-input-placeholder {
+            color: $color-gray-dark-2;
+        }
+    }
+
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem; // property for block
+        margin-top: .7rem;  // property for block
+        display: block;
+        transition: all .3s;
+    }
+
+    // +: adjacent sibling - element coming immediately after
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden; // we do not want the element to be in the page, but we e=want to animate, so also set the opacity to 0
+        transform: translateY(-4rem); // to have the effect of "coming down"
+    }
+}
