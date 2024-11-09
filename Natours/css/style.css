@@ -1,243 +1,526 @@
 /*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit; /* good practice */
-}
-
-html {
-    font-size: 62.5%; 
-    /* 
-        1rem = 10px 
-        we want to set this, but if we set it to px, then when the user changes the size of the briwser, it will be exactly 10px
-        so we should set it to 100% to be exactly as the size of the viewport.
-        but to set 10px, we divide 10/16 = 62.5%
-    */
-}
-
-body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    /* font-size: 16px; */
-    line-height: 1.7;
-    color: #777;
-    padding: 3rem;
-
-    box-sizing: border-box;
-}
-
-.header {
-    height: 95vh;
-    /* to right - start from the left and go to the right-bottom corner */
-    background-image: linear-gradient(to right bottom, #7ed56fc5, #28b485c5), url(../img/hero.jpg);
-    background-size: cover;
-    background-position: top; /* the top of the image stays the same as the image is redimensioned */
-    position: relative;
-
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-    /* 
-        - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
-        - move to the right top corner by 100% on x axis away from the left side (first corner)
-        - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
-        - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
-    */
-}
-
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
-
-.header__logo {
-    height: 3.5rem; /* width is automatically figured out by the browser */
-}
-
-.header__text-box {
-    position: absolute;
-
-    /* these two are related to the parent element*/
-    top: 50%;
-    left: 50%;
-
-    /* these two 50% are direclty related to the current element
-    it will shift half of the width to te left side, and the same for the height */
-    transform: translate(-50%, -50%);
-
-    text-align: center; /* this will align all the inloine elements int he center */
-}
-
-.heading-primary {
-    color: #fff;
-    text-transform: uppercase;
-
-    /* some hack to stop the element from 'shaking' a bit to the top when the anmation ends */
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-}
-
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-
-    /* 
-    how the animation will proceed; how fast or slow the specified parameters in keyframe will happend over time  
-    https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
-    */
-    animation-timing-function: ease-out;
-
-    /* animation happens 3 times */
-    /* animation-iteration-count: 3; */
-
-    /* before animations starts to play, wait for 3 sec */
-    /* animation-delay: 3s; */
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-
-    /* shorthand for all the animation properties, the CSS will figure out which is what */
-    animation: moveInRight 1s ease-out;
-}
-
-/*
     ANIMATIONS:
     1) transition property, and change the properties that we want to animate
     2) specify the steps of the anymations with the keyframes
 */
-
 @keyframes moveInLeft {
-    /* before the animation starts */
-    0% {
-        opacity: 0;
-        /* we want to be more on the left than in the beginning*/
-        transform: translateX(-10rem) /*rotate(-50deg)*/;
-    }
-
-    /* 60% {
+  /* before the animation starts */
+  0% {
+    opacity: 0;
+    /* we want to be more on the left than in the beginning*/
+    transform: translateX(-10rem); }
+  /* 60% {
         transform: rotate(180deg);
     } */
-
-    /* in between */
-    80% {
-        /* move a little bit more to the right */
-        transform: translateX(1rem);
-    }
-
-    /* when the animation finish */
-    100% {
-        opacity: 1;
-        /* in the exaclty place that is now in the document  */
-        transform: translateX(0);
-    }
-}
+  /* in between */
+  80% {
+    /* move a little bit more to the right */
+    transform: translateX(1rem); }
+  /* when the animation finish */
+  100% {
+    opacity: 1;
+    /* in the exaclty place that is now in the document  */
+    transform: translateX(0); } }
 
 @keyframes moveInRight {
-    /* before the animation starts */
-    0% {
-        opacity: 0;
-        /* we want to be more on the left than in the beginning*/
-        transform: translateX(10rem);
-    }
-
-    /* in between */
-    80% {
-        /* move a little bit more to the right */
-        transform: translateX(-1rem);
-    }
-
-    /* when the animation finish */
-    100% {
-        opacity: 1;
-        /* in the exaclty place that is now in the document  */
-        transform: translateX(0);
-    }
-}
+  /* before the animation starts */
+  0% {
+    opacity: 0;
+    /* we want to be more on the left than in the beginning*/
+    transform: translateX(10rem); }
+  /* in between */
+  80% {
+    /* move a little bit more to the right */
+    transform: translateX(-1rem); }
+  /* when the animation finish */
+  100% {
+    opacity: 1;
+    /* in the exaclty place that is now in the document  */
+    transform: translateX(0); } }
 
 @keyframes moveInButton {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
 
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* good practice */ }
 
-.btn:link,
-.btn:visited {
-    display: inline-block;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
-    transition: all .2s; /* all the properties are enabled to be animated; transitions must be set on the initial states */
-    position: relative;
-    font-size: 1.6rem;
-}
+html {
+  font-size: 62.5%;
+  /* 
+        1rem = 10px 
+        we want to set this, but if we set it to px, then when the user changes the size of the briwser, it will be exactly 10px
+        so we should set it to 100% to be exactly as the size of the viewport.
+        but to set 10px, we divide 10/16 = 62.5%
+    */ }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* some hack to stop the element from 'shaking' a bit to the top when the anmation ends */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    /* 
+        how the animation will proceed; how fast or slow the specified parameters in keyframe will happend over time  
+        https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
+        */
+    animation-timing-function: ease-out;
+    /* animation happens 3 times */
+    /* animation-iteration-count: 3; */
+    /* before animations starts to play, wait for 3 sec */
+    /* animation-delay: 3s; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* shorthand for all the animation properties, the CSS will figure out which is what */
+    animation: moveInRight 1s ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  display: inline-block;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.u-margin-top-big {
+  margin-top: 8rem; }
+
+.u-margin-top-huge {
+  margin-top: 10rem; }
+
+.btn:link, .btn:visited {
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  border-radius: 10rem;
+  transition: all .2s;
+  /* all the properties are enabled to be animated; transitions must be set on the initial states */
+  position: relative;
+  font-size: 1.6rem; }
 
 .btn:hover {
-    transform: translateY(-3px);
-
-    /* x y blur color*/
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); 
-}
+  transform: translateY(-3px);
+  /* x y blur color*/
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* after element only when we hover the button */ }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    /* increase the element */
+    opacity: 0;
+    /* fading out */ }
 
 .btn:active {
-    transform: translateY(-1px); /* related to the initial state, not to the hover state */
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2); 
-}
-
-.btn--white {
-    background-color: #fff;
-    color: #777;
-}
+  transform: translateY(-1px);
+  /* related to the initial state, not to the hover state */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn::after {
-    content: "";
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
+.btn--green {
+  background-color: #28b485;
+  color: #fff; }
+  .btn--green::after {
+    background-color: #28b485; }
+
+.btn--animated {
+  animation: moveInButton .5s ease-out .75s;
+  /* .75s for delay */
+  animation-fill-mode: backwards;
+  /* applies the styles of the 0% before the animation starts */ }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform .3s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
     display: inline-block;
-    height: 100%;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem; }
+  .card__side {
+    height: 52rem;
+    transition: all .8s ease;
     width: 100%;
-    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #1998ff, #5643fa); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0); }
+  .card__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg); }
+    .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../img/nat-6.jpg); }
+    .card__picture--3 {
+      background-image: linear-gradient(to right bottom, #1998ff, #5643fa), url(../img/nat-7.jpg); }
+  .card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(25, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .card__details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center; }
+  .card__price-box {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8rem; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
 
-.btn--white::after {
-    background-color: #fff;
-}
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 1.6rem;
+  transform: skewX(-12deg); }
+  .story > * {
+    transform: skewX(12deg); }
+  .story__shape {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    /* 
+            defines where the content flows around the element
+            50% => radius = half of height and width = 7.5rem 
+            50% 50% - exaclty at the center of the circle (x y)
+            we need to use float, we have to set the height and the width in order to work
+        */
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); }
+  .story__image {
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    transition: all .5s; }
+  .story__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s; }
+  .story:hover .story__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%); }
+  .story:hover .story__image {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%); }
 
-/* after element only when we hover the button */
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6); /* increase the element */
-    opacity: 0; /* fading out */
-}
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15; }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
 
-.btn-animated {
-    animation: moveInButton .5s ease-out .75s;
-    /* .75s for delay */
-    animation-fill-mode: backwards; /* applies the styles of the 0% before the animation starts */
-}
+.row {
+  /* if we have enough available space it will have the width that we specified
+     if not and the viewport is smaller the specified width, it will fill 100% of the available space */
+  max-width: 114rem;
+  margin: 0 auto;
+  /* center a block element inside another block element */
+  /*
+        ^ -> starts with
+        * -> contains
+        $ -> ends with
+    */ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2);
+    /*
+            we can do also operations in sass, but we cannot do them with multiple units (for e.g. rem with px)
+            because we complie our sass file while we're developing our page, so even before the page is served to the user
+            and this kind of calculations depends on the layout, so it has to happen while the website is rendered using the visual formatting model
+            so that's when the calculations can occur beacuse then the css and the browser knows what the %, rem, px etc are
+        */ }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem);
+    /*
+            (100% - 2 * 6rem) / 3 -> the width of one 'col-1-of-3' column
+            multiply by 2 because we have 2 columns
+            and then add the gutter width
+        */ }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+.header {
+  height: 95vh;
+  /* to right - start from the left and go to the right-bottom corner */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /* the top of the image stays the same as the image is redimensioned */
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* 
+        - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
+        - move to the right top corner by 100% on x axis away from the left side (first corner)
+        - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
+        - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
+    */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem;
+    /* width is automatically figured out by the browser */ }
+  .header__text-box {
+    position: absolute;
+    /* these two are related to the parent element*/
+    top: 50%;
+    left: 50%;
+    /* these two 50% are direclty related to the current element
+        it will shift half of the width to te left side, and the same for the height */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* this will align all the inloine elements int he center */ }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh;
+  /* so it will cover the remaining white space created by the polygon fron header (95vh - 75vh) */ }
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10rem; }
+  .section-features > * {
+    transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 15rem 0;
+  margin-top: -10rem; }
+
+.section-stories {
+  position: relative;
+  padding: 15rem 0; }
