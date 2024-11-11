@@ -1,4 +1,21 @@
 /*
+    6 - 600px:       Phone
+    600 - 900px:    Tablet portrait
+    9000 - 12000px: Tablet landscape
+    [1200 - 1800] is where our normal styles apply
+    18000px +:      Big desktop
+ 
+    $breakpoint arguments choices:
+    - phone
+    - tab-port
+    - tab-land
+    - big-desktop
+
+    Note: ems and rems in media queries are not affected by the root font-size setting, meaning that 1rem/em is always = to the font-size coming from the browser.
+    Fact: the em is always a good choice for media queries.
+    1em = 16px
+*/
+/*
     ANIMATIONS:
     1) transition property, and change the properties that we want to animate
     2) specify the steps of the anymations with the keyframes
@@ -62,6 +79,15 @@ html {
         so we should set it to 100% to be exactly as the size of the viewport.
         but to set 10px, we divide 10/16 = 62.5%
     */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box;

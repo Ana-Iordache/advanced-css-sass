@@ -7,13 +7,25 @@
 }
 
 html {
-    font-size: 62.5%; 
+    font-size: 62.5%;
     /* 
         1rem = 10px 
         we want to set this, but if we set it to px, then when the user changes the size of the briwser, it will be exactly 10px
         so we should set it to 100% to be exactly as the size of the viewport.
         but to set 10px, we divide 10/16 = 62.5%
     */
+
+    @include respond(tab-land) { // width < 1200?
+        font-size: 56.25%; // 1rem = 9px => 9/16 = 56.25%
+    }
+
+    @include respond(tab-port) { // width < 900? -> this should be after the tab-land, beacuse when the screen is below 900, the lab-land will also be applied, and we want this to have prority 
+        font-size: 50%; // 1rem = 8px => 8/16 = 50%
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%; // 1rem = 12rem => 12/16 = 75%
+    }
 }
 
 body {
