@@ -4,7 +4,6 @@ body {
     /* font-size: 16px; */
     line-height: 1.7;
     color: $color-gray-dark;
-    padding: 3rem;
 }
 
 .heading-primary {
@@ -20,21 +19,26 @@ body {
         font-size: 6rem;
         font-weight: 400;
         letter-spacing: 3.5rem;
-    
+        
         animation-name: moveInLeft;
         animation-duration: 1s;
-    
+        
         /* 
         how the animation will proceed; how fast or slow the specified parameters in keyframe will happend over time  
         https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
         */
         animation-timing-function: ease-out;
-    
+        
         /* animation happens 3 times */
         /* animation-iteration-count: 3; */
-    
+        
         /* before animations starts to play, wait for 3 sec */
         /* animation-delay: 3s; */
+        
+        @include respond(phone) {
+            letter-spacing: 1rem;
+            font-family: 5rem;
+        }
     }
 
     &--sub {
@@ -45,6 +49,10 @@ body {
     
         /* shorthand for all the animation properties, the CSS will figure out which is what */
         animation: moveInRight 1s ease-out;
+
+        @include respond(phone) {
+            letter-spacing: .5rem;
+        }
     }
 }
 
@@ -58,6 +66,14 @@ body {
     color: transparent; //  so the gradient is visible
     letter-spacing: .2rem;
     transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size: 3rem;
+    }
+
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);

@@ -6,6 +6,15 @@
     
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+        }
+    }
+
+    @include respond(tab-port) { 
+        max-width: 50rem;
+        padding: 0 3rem;
     }
 
     // the row will have 0px height because the children are floated, and the height collapses -> cleafix
@@ -21,6 +30,15 @@
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+                margin-right: 0 !important;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port) {
+          width: 100% !important;
         }
     }
 
