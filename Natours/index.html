@@ -330,7 +330,14 @@
 
         <footer class="footer">
             <div class="footer__logo-box">
-                <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+                <picture class="footer__logo">
+                    <!-- Art direction - different images for different viewports width -->
+                    <!-- force the browser to use a specific image in case of a max-width less than 37.5em -->
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+
+                    <!-- Density switching - give the browser a choise to use either the high resolution or the lower one -->
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+                </picture>
             </div>
             <div class="row">
                 <div class="col-1-of-2">
