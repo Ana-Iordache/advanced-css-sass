@@ -9,10 +9,24 @@
     font-size: $default-font-size;
     transform: skewX(-12deg);
 
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+
     // for the image we already have a transform, which will have priority
     // so we need to add also to the transform of img
     & > * {
         transform: skewX(12deg);
+
+        @include respond(phone) {
+            transform: skewX(0);
+        }
     }
 
     &__shape {
@@ -35,6 +49,10 @@
         // this will make the element to have a form of a circle
 
         transform: translateX(-3rem) skewX(12deg); // in order to have more space between the circle and the text => also need to add 3 more rem to the left padding
+
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }
     }
 
     &__image {
