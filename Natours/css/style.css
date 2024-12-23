@@ -495,17 +495,22 @@ body {
     width: 15rem;
     height: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    /* 
-            defines where the content flows around the element
-            50% => radius = half of height and width = 7.5rem 
-            50% 50% - exaclty at the center of the circle (x y)
-            we need to use float, we have to set the height and the width in order to work
-        */
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
+    overflow: hidden;
+    border-radius: 50%;
     transform: translateX(-3rem) skewX(12deg); }
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      .story__shape {
+        border-radius: unset;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        /* 
+                defines where the content flows around the element
+                50% => radius = half of height and width = 7.5rem 
+                50% 50% - exaclty at the center of the circle (x y)
+                we need to use float, we have to set the height and the width in order to work
+            */
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); } }
     @media (max-width: 37.5em) {
       .story__shape {
         transform: translateX(-3rem) skewX(0); } }
@@ -638,6 +643,11 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: all .3s; }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.3); } }
   .popup__content {
     width: 75%;
     background-color: #fff;
@@ -776,25 +786,29 @@ body {
     width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 .header {
-  height: 95vh;
+  height: 85vh;
   /* to right - start from the left and go to the right-bottom corner */
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
   /* the top of the image stays the same as the image is redimensioned */
   position: relative;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* 
-        - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
-        - move to the right top corner by 100% on x axis away from the left side (first corner)
-        - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
-        - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
-    */
   /* when the resolution is > 192dpi (2x screen) and the width is larger than 600px (so on small screen won't be applied) OR
       the width is larger than 2000px
-      load the larger image for the background */ }
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+      load the larger image for the background
+      -webkit-min-device-pixel-ratio: 2 => for browsers that doesn't support min-resolution */ }
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      /* 
+            - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
+            - move to the right top corner by 100% on x axis away from the left side (first corner)
+            - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
+            - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
+        */
+      height: 95vh; } }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-width: 125em) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {

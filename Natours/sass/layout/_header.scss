@@ -1,24 +1,30 @@
 .header {
-    height: 95vh;
+    height: 85vh;
     /* to right - start from the left and go to the right-bottom corner */
     background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero-small.jpg);
     background-size: cover;
     background-position: top; /* the top of the image stays the same as the image is redimensioned */
     position: relative;
 
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    /* 
-        - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
-        - move to the right top corner by 100% on x axis away from the left side (first corner)
-        - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
-        - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
-    */
+    
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        /* 
+            - starting from the left top corner, which is the first set of numbers, we want to stay in place => 0 0
+            - move to the right top corner by 100% on x axis away from the left side (first corner)
+            - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
+            - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
+        */
+        height: 95vh;
+    }
 
     /* when the resolution is > 192dpi (2x screen) and the width is larger than 600px (so on small screen won't be applied) OR
       the width is larger than 2000px
-      load the larger image for the background */
+      load the larger image for the background
+      -webkit-min-device-pixel-ratio: 2 => for browsers that doesn't support min-resolution */
     @media (min-resolution: 192dpi) and (min-width: 37.5em), 
+          (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
           (min-width: 125em) {
           background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.8), rgba($color-secondary-dark, 0.8)), url(../img/hero.jpg);
     }
