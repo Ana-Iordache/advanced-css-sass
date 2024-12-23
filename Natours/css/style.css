@@ -778,7 +778,7 @@ body {
 .header {
   height: 95vh;
   /* to right - start from the left and go to the right-bottom corner */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
   /* the top of the image stays the same as the image is redimensioned */
@@ -790,7 +790,13 @@ body {
         - move to the right top corner by 100% on x axis away from the left side (first corner)
         - then move to the right bottom corner, 100% on the x axis, BUT on the y axis only with 75%
         - and finally, move to the left bottom corner by 0 on x axis away from the very first corner and 100% on y
-    */ }
+    */
+  /* when the resolution is > 192dpi (2x screen) and the width is larger than 600px (so on small screen won't be applied) OR
+      the width is larger than 2000px
+      load the larger image for the background */ }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
