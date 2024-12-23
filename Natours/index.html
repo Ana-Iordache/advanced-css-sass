@@ -72,9 +72,33 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+                          <!-- Resolution switching and Density switching
+                              in srcset: specify the width in pixels of the images to inform the browser without having to download them 
+                              sizes: inform the browser about the approximate width of the image at different viewport width (the approximate width in vw unit)
+                              for e.g. if the image has a width of 171px in 900vp => 171/900 = aprox 20vw; on 600 => 171/900 = aprox 30vw;
+                              300px is for the other cases
+                              also specify the src in case the browser doesn't know about srcset and sizes-->
+                            <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600) 30vw, 300px"
+                                 alt="Photo 1"
+                                 class="composition__photo composition__photo--p1" 
+                                 src="img/nat-1-large.jpg">
+
+                            <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600) 30vw, 300px" 
+                                 alt="Photo 2"
+                                 class="composition__photo composition__photo--p2" 
+                                 src="img/nat-2-large.jpg">
+
+                            <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600) 30vw, 300px" 
+                                 alt="Photo 3"
+                                 class="composition__photo composition__photo--p3" 
+                                 src="img/nat-3-large.jpg">
+
+                            <!-- <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                             <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3"> -->
                         </div>
                     </div>
                 </div>
@@ -335,8 +359,8 @@
                     <!-- force the browser to use a specific image in case of a max-width less than 37.5em -->
                     <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
 
-                    <!-- Density switching - give the browser a choise to use either the high resolution or the lower one -->
-                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+                    <!-- Density switching - give the browser a choose to use either the high resolution or the lower one -->
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-2x.png">
                 </picture>
             </div>
             <div class="row">
