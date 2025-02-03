@@ -391,18 +391,22 @@
     margin-right: .7rem;
 
     // Older browsers
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     // Newer browsers - masks
     // a mask defines an area where can look through the element and see what's behind it
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    // now we can see the color only there the icon is located
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      // now we can see the color only there the icon is located
+  
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
 
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+      background-image: none;
+    }
   }
 }
 
