@@ -1,4 +1,31 @@
 .features {
-  background-color: $color-grey-dark-2;
-  grid-column: center-start / center-end ;
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+
+  display: grid; // a subgrid - allowing a grid that is inside a grid to snap its tracks to the parent grid
+  // grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  // auto-fit: it creates as many track as can fit based on the width defined
+  gap: 6rem;
+  align-items: start; // now all the first rows of each feature grid is equal in height
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  row-gap: 1.5rem;
+  column-gap: 2.5rem;
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    grid-row: 1 / span 2; //-1 is applied for the specific grid (and we didn't specify a grid so it will not apply)
+    transform: translateY(-1rem); // to have the center of icon on the same line with the text
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
 }
